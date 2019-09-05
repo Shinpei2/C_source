@@ -30,7 +30,7 @@ void to_write(struct cell *p_list_head, char *filename);
 char* str_input (char *s);
 
 /* 残りタスク：　入力したファイル名のfile_load()への受け渡し
-　対象行：17, 44~48　※コメントアウトしてる部分 */
+　対象行：17, 45~48　※コメントアウトしてる部分 */
 
 /* main関数 */
 int main (void){
