@@ -1,3 +1,8 @@
+/*
+editor_ver2.c
+　: 既存のテキストファイルを開き、文字列をリストに格納後、文字のappend(末尾追加)、insert(挿入)、delete(削除)を行う。
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -25,7 +30,7 @@ void to_write(struct cell *p_list_head, char *filename);
 char* str_input (char *s);
 
 /* 残りタスク：　入力したファイル名のfile_load()への受け渡し
-　対象行：11, 39~43　※コメントアウトしてる部分 */
+　対象行：17, 44~48　※コメントアウトしてる部分 */
 
 /* main関数 */
 int main (void){
