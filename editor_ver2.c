@@ -173,7 +173,7 @@ void rev_display(struct cell *curr_cell){
 }
 
 
-/* to_append() : リストの末尾に文字を追加 */
+/* to_append() : 文字の入力を受け付け、リストの末尾に追加 */
 struct cell* to_append(struct cell *p_list_head ,struct cell *new_cell){
     int a;
     int chr;
