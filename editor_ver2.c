@@ -337,7 +337,7 @@ void to_write(struct cell *p_list_head, char *filename){
     fclose(fp);
 }
 
-
+/* str_input() : キーボードから文字列を入力し、そのポインタを返す */
 char* str_input (char *s){
     int c;
     int i = 0;
