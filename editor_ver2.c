@@ -81,8 +81,9 @@ int main (void){
         while((c = getchar()) != '\n'){
             flag = c;
         }
-        printf("flag:%c　終了します\n", flag);
+        
         if(flag != '1'){
+	    printf("flag:%c　終了します\n", flag);
             break;
         }
     }
