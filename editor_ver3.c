@@ -317,7 +317,7 @@ struct cell* to_delete(struct cell *p_list_head){
 
 
     /* curr_cellの記憶領域を解放 */
-    free(curr_cell);
+    //free(curr_cell);
 
     return p_list_head;
 }
