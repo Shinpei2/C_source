@@ -38,6 +38,7 @@ struct entry entry_3 = { "113", "Mita", 1, "IIS-E1", "I am Jack."};
 int create();
 void print(struct cell *p_list_head);
 int to_integer(char *str);
+cell* find_id(char *entry_id);
 
 int main (void){
     /* main関数内デモ 
@@ -71,18 +72,19 @@ int main (void){
 }
 
 int create(){
-    int i;                  // for文用のint型変数
-    int cr_id_num = 0;      // 作成した社員情報のidをint型で保持するための変数
-    int list_id_num = 0;  //　リスト内の社員情報のidをint型で保持するための変数
-    char cr_id[10] = {'\0'};
+    int i;                          // for文用のint型変数
+    int cr_id_num = 0;              // 作成した社員情報のidをint型で保持するための変数
+    int list_id_num = 0;            //　リスト内の社員情報のidをint型で保持するための変数
+    char cr_id[10] = {'\0'};        //入力情報の一時格納用変数。入力自体は2倍の大きさまで受付OKにする。
     char cr_name[40] = {'\0'};
     char cr_sex[3] = {'\0'};
     char cr_department[20] = {'\0'};
     char cr_my_intro[200] = {'\0'};
-    entry cr_entry = {"", "", 0, "", ""};   //作成する社員情報。空白で初期化
+    entry cr_entry = {"", "", 0, "", ""};       //作成する社員情報。空白で初期化
+    cell *target = NULL;                        // idの重複を調べるためのcellポインタ
+
 
     /***** 入力処理部　※以下、未完　(1)NULLチェック *****/
-
 	printf("idを入力：");
 	scanf("%s", cr_id);
     getchar();
@@ -95,6 +97,11 @@ int create(){
             printf("不正な入力2：数字でない\n");
             return 2;
         }
+    }
+    target = find_id(cr_id);
+    if (target != NULL){
+        printf("同じ社員番号が存在しています。\n");
+        return 3;
     }
     for(i = 0; i < strlen(cr_id); i++){
         cr_entry.id[i] = cr_id[i];
@@ -231,4 +238,39 @@ int to_integer(char *str){
         num = num * 10 + (str[i] - '0') ;
     }
     return num;
+}
+
+/* find_id - リスト内のidを検索し、idがあれば戻り値構造体ポインタ、ない場合nullを返す */
+cell* find_id(char *entry_id){
+    int f = 0;
+    int entry_id_num;
+    int list_id_num;
+    cell *curr_cell = p_list_head;
+
+    entry_id_num = to_integer(entry_id);
+    // printf("entry_id_num: %d\n", entry_id_num);
+
+    while(1){
+        curr_cell = curr_cell->next_cell;
+        // 終端まで探索し、見つからない場合はループを抜ける
+        if(curr_cell == NULL){
+            break;
+        }
+
+        list_id_num = to_integer(curr_cell->cell_entr.id);
+        // printf("list_id_num: %d\n", list_id_num);
+
+        // 数字が一致した場合は、fを1にしてループを抜ける
+        if (entry_id_num == list_id_num){
+            f = 1;
+            break;
+        }
+    }
+
+    // printf("f:%d\n", f);
+    if (f = 1){
+        return curr_cell;
+    }else{
+        return NULL;
+    }
 }
