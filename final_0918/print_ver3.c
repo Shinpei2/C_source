@@ -35,7 +35,7 @@ struct entry entry_3 = { "11113", "Mita", 1, "IIS-E1", "I am Jack."};
 
 
 /*関数*/
-void print(struct cell *p_list_head);
+void print(void);
 
 int main(void){
 
@@ -65,11 +65,11 @@ int main(void){
     /*main関数内デモ終端*/
 	
     /* テスト */
-	print(p_list_head);
+	print();
 }
 
 
-void print(struct cell *p_list_head){
+void print(void){
 	struct cell *curr_cell = p_list_head->next_cell;
 	// printf("%p\n", curr_cell);
 	// printf("%p\n", curr_cell->next_cell);

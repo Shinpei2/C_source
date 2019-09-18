@@ -22,7 +22,7 @@ typedef struct cell {
 
 
 /* 広域変数宣言 */
-struct cell list_head = {0 ,0};
+struct cell list_head = {{"", "", 0, "", ""} ,NULL};
 struct cell *p_list_head = &list_head;
 FILE *fp;
 char filename[100];
@@ -35,14 +35,14 @@ struct entry entry_3 = { "11113", "Mita", 1, "IIS-E1", "I am Jack."};
 
 
 /* 関数 */
-int create();
-void print(struct cell *p_list_head);
+void create(void);
+void print(void);
 int to_integer(char *str);
 cell* find_id(char *entry_id);
 
 int main (void){
-    /* main関数内デモ 
-    list_head -> cell_1 -> cell_2 -> cell_3　
+    /* main関数内デモ
+    list_head -> cell_1 -> cell_2 -> cell_3
     ※cell_3のnext_cellはNULL
     ※list_headの中身　→{0, cell_1}
     */
@@ -67,11 +67,11 @@ int main (void){
     /*main関数内デモ終端*/
 
     create();
-    print(p_list_head);
+    print();
 
 }
 
-int create(){
+void create(void){
     int i;                          // for文用のint型変数
     int check = 0;                      //文字列入力チェック用
     int cr_id_num = 0;              // 作成した社員情報のidをint型で保持するための変数
@@ -112,7 +112,7 @@ int create(){
         }
         for(i = 0; i < strlen(cr_id); i++){
             cr_entry.id[i] = cr_id[i];
-        } 
+        }
         if (strlen(cr_id) != 5){
             cr_entry.id[i+1] = '\0';
         }
@@ -171,7 +171,7 @@ int create(){
     }
 
     while(1){
-        printf("自己紹介を入力(空白なし)：");
+        printf("自己紹介を入力：");
         scanf("%s", cr_my_intro);
         getchar();
         if (strlen(cr_my_intro) > 100){
@@ -234,10 +234,10 @@ int create(){
             break;
         }
     }
-    
+
 }
 
-void print(struct cell *p_list_head){
+void print(void){
 	struct cell *curr_cell = p_list_head->next_cell;
 	// printf("%p\n", curr_cell);
 	// printf("%p\n", curr_cell->next_cell);
@@ -248,7 +248,7 @@ void print(struct cell *p_list_head){
         printf("性別(男：1 女：2)  　 ：%d\n", curr_cell->cell_entr.sex);
         printf("部署名　　　　　　　　：%s\n", curr_cell->cell_entr.department);
         printf("自己紹介　　　　　　　：%s\n", curr_cell->cell_entr.my_intro);
-        // printf("%s %s %d %s %s\n" ,curr_cell->cell_entr.id, curr_cell->cell_entr.name, 
+        // printf("%s %s %d %s %s\n" ,curr_cell->cell_entr.id, curr_cell->cell_entr.name,
         // 	curr_cell->cell_entr.sex, curr_cell->cell_entr.department, curr_cell->cell_entr.my_intro);
         curr_cell = curr_cell->next_cell;
     }
@@ -293,7 +293,7 @@ cell* find_id(char *entry_id){
     }
 
     // printf("f:%d\n", f);
-    if (f = 1){
+    if (f == 1){
         return curr_cell;
     }else{
         return NULL;

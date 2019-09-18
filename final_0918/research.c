@@ -151,7 +151,7 @@ cell* find_id(char *entry_id){
     }
 
     // printf("f:%d\n", f);
-    if (f = 1){
+    if (f == 1){
         return curr_cell;
     }else{
         return NULL;
