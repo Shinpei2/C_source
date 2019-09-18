@@ -132,7 +132,7 @@ int create(){
         printf("不正な入力1：文字列の長さ\n");
         return 1;
     }
-    if (cr_sex[0] == '0' || cr_sex[0] == '1'){
+    if (cr_sex[0] == '1' || cr_sex[0] == '2'){
         cr_entry.sex = cr_sex[0] - '0';
     } else{
         printf("不正な入力2：0か1以外の入力\n");
@@ -167,11 +167,11 @@ int create(){
         cr_entry.my_intro[i+1] = '\0';
     }
 
-    printf("id：%s\n", cr_entry.id);
-    printf("名前：%s\n", cr_entry.name);
-    printf("性別：%d\n", cr_entry.sex);
-    printf("部署名：%s\n", cr_entry.department);
-    printf("自己紹介：%s\n", cr_entry.my_intro);
+    // printf("id：%s\n", cr_entry.id);
+    // printf("名前：%s\n", cr_entry.name);
+    // printf("性別：%d\n", cr_entry.sex);
+    // printf("部署名：%s\n", cr_entry.department);
+    // printf("自己紹介：%s\n", cr_entry.my_intro);
 
 
     /***** リストへの格納 *****/
@@ -222,12 +222,17 @@ void print(struct cell *p_list_head){
 	// printf("%p\n", curr_cell);
 	// printf("%p\n", curr_cell->next_cell);
     while (curr_cell != NULL){
-		//TODO 1．性別　→ 数字に応じて、男女で表示　
-		//TODO 2．画面図通りに表示されるようにprintf内を整形　
-        printf("%s %s %d %s %s\n" ,curr_cell->cell_entr.id, curr_cell->cell_entr.name, 
-        	curr_cell->cell_entr.sex, curr_cell->cell_entr.department, curr_cell->cell_entr.my_intro);
+        printf("------------------------------\n");
+        printf("社員番号　　　　　　　：%s\n", curr_cell->cell_entr.id);
+        printf("名前　　　　　　　　　：%s\n", curr_cell->cell_entr.name);
+        printf("性別(男：1 女：2)  　 ：%d\n", curr_cell->cell_entr.sex);
+        printf("部署名　　　　　　　　：%s\n", curr_cell->cell_entr.department);
+        printf("自己紹介　　　　　　　：%s\n", curr_cell->cell_entr.my_intro);
+        // printf("%s %s %d %s %s\n" ,curr_cell->cell_entr.id, curr_cell->cell_entr.name, 
+        // 	curr_cell->cell_entr.sex, curr_cell->cell_entr.department, curr_cell->cell_entr.my_intro);
         curr_cell = curr_cell->next_cell;
     }
+    printf("------------------------------\n");
 }
 
 /* to_integer() - 数字（文字列）を数値に変換する関数 */

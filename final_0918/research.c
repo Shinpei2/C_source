@@ -79,7 +79,7 @@ void research(void){
 
     while(1){
         int f = 0;
-        printf("検索するidを入力して下さい。");
+        printf("検索するcellの社員番号を入力して下さい：");
         scanf("%s", search_id);
         getchar();
         if (strlen(search_id) > 5){
@@ -106,12 +106,14 @@ void research(void){
     cell *target = find_id(search_id);
 
     if (target != NULL){
-        printf("社員情報が見つかりました。\n");
-        printf("id：%s\n", target->cell_entr.id);
-        printf("名前：%s\n", target->cell_entr.name);
-        printf("性別：%d\n", target->cell_entr.sex);
-        printf("部署名：%s\n", target->cell_entr.department);
-        printf("自己紹介：%s\n", target->cell_entr.my_intro);
+        printf("cellが見つかりました。\n");
+        printf("------------------------------\n");
+        printf("社員番号　　　　　　　：%s\n", target->cell_entr.id);
+        printf("名前　　　　　　　　　：%s\n", target->cell_entr.name);
+        printf("性別(男：1 女：2)  　 ：%d\n", target->cell_entr.sex);
+        printf("部署名　　　　　　　　：%s\n", target->cell_entr.department);
+        printf("自己紹介　　　　　　　：%s\n", target->cell_entr.my_intro);
+        printf("------------------------------\n");
 
     } else{
         printf("見つかりませんでした。\n");

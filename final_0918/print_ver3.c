@@ -73,18 +73,23 @@ int main(void){
 	print(p_list_head);
 }
 
+
 void print(struct cell *p_list_head){
-	struct cell *curr_cell = p_list_head;
-	printf("%p\n", curr_cell);
-	printf("%p\n", curr_cell->next_cell);
+	struct cell *curr_cell = p_list_head->next_cell;
+	// printf("%p\n", curr_cell);
+	// printf("%p\n", curr_cell->next_cell);
     while (curr_cell != NULL){
-		//TODO 1．性別　→ 数字に応じて、男女で表示　
-		//TODO 2．画面図通りに表示されるようにprintf内を整形　
-        printf("%s %s %d %s %s\n" ,curr_cell->cell_entr.id, curr_cell->cell_entr.name, 
-        	curr_cell->cell_entr.sex, curr_cell->cell_entr.department, curr_cell->cell_entr.my_intro);
+        printf("------------------------------\n");
+        printf("社員番号　　　　　　　：%s\n", curr_cell->cell_entr.id);
+        printf("名前　　　　　　　　　：%s\n", curr_cell->cell_entr.name);
+        printf("性別(男：1 女：2)  　 ：%d\n", curr_cell->cell_entr.sex);
+        printf("部署名　　　　　　　　：%s\n", curr_cell->cell_entr.department);
+        printf("自己紹介　　　　　　　：%s\n", curr_cell->cell_entr.my_intro);
+        // printf("%s %s %d %s %s\n" ,curr_cell->cell_entr.id, curr_cell->cell_entr.name, 
+        // 	curr_cell->cell_entr.sex, curr_cell->cell_entr.department, curr_cell->cell_entr.my_intro);
         curr_cell = curr_cell->next_cell;
     }
+    printf("------------------------------\n");
 }
-
 
 
