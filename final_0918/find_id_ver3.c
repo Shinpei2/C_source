@@ -7,7 +7,7 @@
 //構造体
 /* 社員構造体 */
 typedef struct entry {
-	char id[6];
+    char id[6];
     char name[21];
     int sex;
     char department[11];
@@ -16,7 +16,7 @@ typedef struct entry {
 
 /* リスト構造体の定義 */
 typedef struct cell {
-	struct entry cell_entr;
+    struct entry cell_entr;
     struct cell *next_cell;
 } cell;
 
@@ -52,13 +52,13 @@ int main (void){
 
     cell_1 = (cell*)malloc(sizeof(cell));
     cell_1->cell_entr = entry_1;
-	p_list_head->next_cell = cell_1;
+    p_list_head->next_cell = cell_1;
 
-	cell_2 = (cell*)malloc(sizeof(cell));
+    cell_2 = (cell*)malloc(sizeof(cell));
     cell_2->cell_entr = entry_2;
     cell_1->next_cell = cell_2;
 
-	cell_3 = (cell*)malloc(sizeof(cell));
+    cell_3 = (cell*)malloc(sizeof(cell));
     cell_3->cell_entr = entry_3;
     cell_2->next_cell = cell_3;
 
