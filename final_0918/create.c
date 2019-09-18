@@ -223,6 +223,7 @@ void print(struct cell *p_list_head){
     }
 }
 
+/* to_integer() - 数字（文字列）を数値に変換する関数 */
 int to_integer(char *str){
     int num = 0;
     int len = strlen(str);
