@@ -1,24 +1,25 @@
-#include<stdio.h>
-#include<ctype.h>
-#include<stdlib.h>
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<ctype.h>
+#include	<string.h>
 
-/* 構造体宣言 */
-//社員構造体
-struct entry {
-    char id[5];
-    char name[20];
+
+//構造体
+/* 社員構造体 */
+typedef struct entry {
+	char id[6];
+    char name[21];
     int sex;
-    char department[10];
-    char my_intro[100];
+    char department[11];
+    char my_intro[101];
     //struct entry *next_cell;
-};
+} entry;
 
-//リスト構造体
-struct cell{
-    struct entry cell_entr;
+/* リスト構造体の定義 */
+typedef struct cell {
+	struct entry cell_entr;
     struct cell *next_cell;
-};
-
+} cell;
 
 
 /* 広域変数宣言 */
@@ -26,18 +27,16 @@ struct cell list_head = {0 ,0};
 struct cell *p_list_head = &list_head;
 FILE *fp;
 char filename[100];
+char *p_filename = filename;
 
 
-/* デモデータ */
-struct entry entry_1 = { "111", "arinaga", 0, "IIS-E2", "I am King."};
-struct entry entry_2 = { "112", "kuroiwa", 1, "IIS-E1", "I am Queen."};
-struct entry entry_3 = { "113", "Mita", 1, "IIS-E1", "I am Jack."};
+/*デモデータ */
+struct entry entry_1 = { "11111", "arinaga", 1, "IIS-E2", "I am King."};
+struct entry entry_2 = { "11112", "kuroiwa", 2, "IIS-E1", "I am Queen."};
+struct entry entry_3 = { "11113", "Mita", 1, "IIS-E1", "I am Jack."};
 
 
 int main(void){
-    //char filename[100]; 
-    char *p_filename;
-    p_filename = filename;
 
     /* main関数内デモ 
     list_head -> cell_1 -> cell_2 -> cell_3　
@@ -122,22 +121,22 @@ struct cell *file_load(){
 }
 
 
-// struct entry* append(char c, struct entry *curr_cell){
-//     struct entry *new_cell;
-//     /* 記憶領域の確保 */
-//     if ((new_cell = (struct entry *) malloc(sizeof(struct entry))) == NULL) {
-//         printf("malloc error\n");
-//         exit(EXIT_FAILURE);
-//     }
+struct entry* append(char c, struct entry *curr_cell){
+    struct entry *new_cell;
+    /* 記憶領域の確保 */
+    if ((new_cell = (struct entry *) malloc(sizeof(struct entry))) == NULL) {
+        printf("malloc error\n");
+        exit(EXIT_FAILURE);
+    }
  
-//     curr_entry->id = id;
-//     curr_entry->name = name;
-//     curr_entry->sex = sex;
-//     curr_entry->department = department;
-//     curr_entry->my_intro = my_intro;
-//     curr_entry->next = new_cell;
-//     new_entry->next = NULL;
-//     //new_cell->prev = curr_cell;
-//     curr_cell = new_cell;
-//     return curr_cell;
-// }
+    curr_entry->id = id;
+    curr_entry->name = name;
+    curr_entry->sex = sex;
+    curr_entry->department = department;
+    curr_entry->my_intro = my_intro;
+    curr_entry->next = new_cell;
+    new_entry->next = NULL;
+    //new_cell->prev = curr_cell;
+    curr_cell = new_cell;
+    return curr_cell;
+}

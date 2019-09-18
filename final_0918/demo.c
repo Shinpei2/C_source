@@ -1,20 +1,17 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<ctype.h>
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<ctype.h>
+#include	<string.h>
 
-#define INITIALIZER NULL;
-
-/* 構造体 */
 
 //構造体
 /* 社員構造体 */
 typedef struct entry {
-	char id[5];
-    char name[20];
+	char id[6];
+    char name[21];
     int sex;
-    char department[10];
-    char my_intro[100];
+    char department[11];
+    char my_intro[101];
 } entry;
 
 /* リスト構造体の定義 */
@@ -32,15 +29,13 @@ char filename[100];
 
 
 /*デモデータ */
-struct entry entry_1 = { "111", "arinaga", 0, "IIS-E2", "I am King."};
-struct entry entry_2 = { "112", "kuroiwa", 1, "IIS-E1", "I am Queen."};
-struct entry entry_3 = { "113", "Mita", 1, "IIS-E1", "I am Jack."};
+struct entry entry_1 = { "11111", "arinaga", 1, "IIS-E2", "I am King."};
+struct entry entry_2 = { "11112", "kuroiwa", 2, "IIS-E1", "I am Queen."};
+struct entry entry_3 = { "11113", "Mita", 1, "IIS-E1", "I am Jack."};
 
 
 /* 関数 */
-void save(){
 
-}
 
 int main (void){
     /* main関数内デモ 

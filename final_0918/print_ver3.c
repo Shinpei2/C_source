@@ -1,15 +1,17 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<ctype.h>
+#include	<string.h>
 
 
 //構造体
 /* 社員構造体 */
 typedef struct entry {
-	char id[5];
-    char name[20];
+	char id[6];
+    char name[21];
     int sex;
-    char department[10];
-    char my_intro[100];
+    char department[11];
+    char my_intro[101];
 } entry;
 
 /* リスト構造体の定義 */
@@ -18,6 +20,7 @@ typedef struct cell {
     struct cell *next_cell;
 } cell;
 
+
 /* 広域変数宣言 */
 struct cell list_head = {0 ,0};
 struct cell *p_list_head = &list_head;
@@ -25,17 +28,14 @@ FILE *fp;
 char filename[100];
 
 
-/* 関数のプロトタイプ宣言 */
-struct cell* file_load(struct cell *p_list_head);
-void print(struct cell *p_list_head);
-
 /*デモデータ */
-struct entry entry_1 = { "111", "arinaga", 0, "IIS-E2", "I am King."};
-struct entry entry_2 = { "112", "kuroiwa", 1, "IIS-E1", "I am Queen."};
-struct entry entry_3 = { "113", "Mita", 1, "IIS-E1", "I am Jack."};
+struct entry entry_1 = { "11111", "arinaga", 1, "IIS-E2", "I am King."};
+struct entry entry_2 = { "11112", "kuroiwa", 2, "IIS-E1", "I am Queen."};
+struct entry entry_3 = { "11113", "Mita", 1, "IIS-E1", "I am Jack."};
 
 
 /*関数*/
+void print(struct cell *p_list_head);
 
 int main(void){
 
@@ -64,12 +64,7 @@ int main(void){
     cell_3->next_cell = NULL;
     /*main関数内デモ終端*/
 	
-	int c;
-	int op;
-	// struct cell list_head;
-	// struct cell *p_list_head = &list_head;
-	// struct cell *p_list;
-	//p_list_end = file_load(p_list_head);
+    /* テスト */
 	print(p_list_head);
 }
 

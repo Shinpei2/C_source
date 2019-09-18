@@ -7,11 +7,11 @@
 //構造体
 /* 社員構造体 */
 typedef struct entry {
-	char id[5];
-    char name[20];
+	char id[6];
+    char name[21];
     int sex;
-    char department[10];
-    char my_intro[100];
+    char department[11];
+    char my_intro[101];
 } entry;
 
 /* リスト構造体の定義 */
@@ -29,9 +29,9 @@ char filename[100];
 
 
 /*デモデータ */
-struct entry entry_1 = { "111", "arinaga", 0, "IIS-E2", "I am King."};
-struct entry entry_2 = { "112", "kuroiwa", 1, "IIS-E1", "I am Queen."};
-struct entry entry_3 = { "113", "Mita", 1, "IIS-E1", "I am Jack."};
+struct entry entry_1 = { "11111", "arinaga", 1, "IIS-E2", "I am King."};
+struct entry entry_2 = { "11112", "kuroiwa", 2, "IIS-E1", "I am Queen."};
+struct entry entry_3 = { "11113", "Mita", 1, "IIS-E1", "I am Jack."};
 
 
 /* 関数 */
@@ -73,6 +73,7 @@ int main (void){
 
 int create(){
     int i;                          // for文用のint型変数
+    int check = 0;                      //文字列入力チェック用
     int cr_id_num = 0;              // 作成した社員情報のidをint型で保持するための変数
     int list_id_num = 0;            //　リスト内の社員情報のidをint型で保持するための変数
     char cr_id[10] = {'\0'};        //入力情報の一時格納用変数。入力自体は2倍の大きさまで受付OKにする。
@@ -85,86 +86,105 @@ int create(){
 
 
     /***** 入力処理部　※以下、未完　(1)NULLチェック *****/
-	printf("idを入力：");
-	scanf("%s", cr_id);
-    getchar();
-    if (strlen(cr_id) > 5){
-        printf("不正な入力1：文字列の長さ\n");
-        return 1;
-    }
-    for(i=0; i < strlen(cr_id); i++){
-        if (!isdigit(cr_id[i])){
-            printf("不正な入力2：数字でない\n");
-            return 2;
+    while(1){
+        check = 0;
+        printf("idを入力：");
+        scanf("%s", cr_id);
+        getchar();
+        if (strlen(cr_id) != 5){
+            printf("不正な入力1：文字列の長さ\n");
+            continue;
         }
-    }
-    target = find_id(cr_id);
-    if (target != NULL){
-        printf("同じ社員番号が存在しています。\n");
-        return 3;
-    }
-    for(i = 0; i < strlen(cr_id); i++){
-        cr_entry.id[i] = cr_id[i];
-    } 
-    if (strlen(cr_id) != 5){
-        cr_entry.id[i+1] = '\0';
-    }
-
-
-    printf("名前を入力：");
-	scanf("%s", cr_name);
-    getchar();
-    if (strlen(cr_name) > 20){
-        printf("不正な入力1：文字列の長さ\n");
-        return 1;
-    }
-    for(i = 0; i < strlen(cr_name); i++){
-        cr_entry.name[i] = cr_name[i];
-    }
-    if (strlen(cr_name) != 20){
-        cr_entry.name[i+1] = '\0';
+        for(i=0; i < strlen(cr_id); i++){
+            if (!isdigit(cr_id[i])){
+                printf("不正な入力2：数字でない\n");
+                check = 1;
+                break;
+            }
+        }
+        if (check == 1){
+            continue;
+        }
+        target = find_id(cr_id);
+        if (target != NULL){
+            printf("同じ社員番号が存在しています。\n");
+            continue;
+        }
+        for(i = 0; i < strlen(cr_id); i++){
+            cr_entry.id[i] = cr_id[i];
+        } 
+        if (strlen(cr_id) != 5){
+            cr_entry.id[i+1] = '\0';
+        }
+        break;
     }
 
-    printf("性別を入力(0:男 1:女)：");
-	scanf("%s", cr_sex);
-    getchar();
-    if (strlen(cr_sex) > 1){
-        printf("不正な入力1：文字列の長さ\n");
-        return 1;
-    }
-    if (cr_sex[0] == '1' || cr_sex[0] == '2'){
-        cr_entry.sex = cr_sex[0] - '0';
-    } else{
-        printf("不正な入力2：0か1以外の入力\n");
-        return 2;
-    }
-
-    printf("部署名を入力：");
-	scanf("%s", cr_department);
-    getchar();
-    if (strlen(cr_department) > 10){
-        printf("不正な入力1：文字列の長さ\n");
-        return 1;
-    }
-    for(i = 0; i < strlen(cr_department); i++){
-        cr_entry.department[i] = cr_department[i];
-    }
-    if (strlen(cr_department) != 10){
-        cr_entry.department[i+1] = '\0';
+    while(1){
+        printf("名前を入力：");
+        scanf("%s", cr_name);
+        getchar();
+        if (strlen(cr_name) > 20){
+            printf("不正な入力1：文字列の長さ\n");
+            continue;
+        }
+        for(i = 0; i < strlen(cr_name); i++){
+            cr_entry.name[i] = cr_name[i];
+        }
+        if (strlen(cr_name) != 20){
+            cr_entry.name[i+1] = '\0';
+        }
+        break;
     }
 
-    printf("自己紹介を入力(空白なし)：");
-	scanf("%s", cr_my_intro);
-    getchar();
-    if (strlen(cr_my_intro) > 100){
-        printf("不正な入力1：文字列の長さ\n");
-        return 1;
+    while(1){
+        printf("性別を入力(1:男 2:女)：");
+        scanf("%s", cr_sex);
+        getchar();
+        if (strlen(cr_sex) > 1){
+            printf("不正な入力1：文字列の長さ\n");
+            continue;
+        }
+        if (cr_sex[0] == '1' || cr_sex[0] == '2'){
+            cr_entry.sex = cr_sex[0] - '0';
+        } else{
+            printf("不正な入力2：1か2以外の入力\n");
+            continue;
+        }
+        break;
     }
-    for(i = 0; i < strlen(cr_my_intro); i++){
-        cr_entry.my_intro[i] = cr_my_intro[i];
+
+    while(1){
+        printf("部署名を入力：");
+        scanf("%s", cr_department);
+        getchar();
+        if (strlen(cr_department) > 10){
+            printf("不正な入力1：文字列の長さ\n");
+            continue;
+        }
+        for(i = 0; i < strlen(cr_department); i++){
+            cr_entry.department[i] = cr_department[i];
+        }
+        if (strlen(cr_department) != 10){
+            cr_entry.department[i+1] = '\0';
+        }
+        break;
     }
-    if (strlen(cr_my_intro) != 100){
-        cr_entry.my_intro[i+1] = '\0';
+
+    while(1){
+        printf("自己紹介を入力(空白なし)：");
+        scanf("%s", cr_my_intro);
+        getchar();
+        if (strlen(cr_my_intro) > 100){
+            printf("不正な入力1：文字列の長さ\n");
+            continue;
+        }
+        for(i = 0; i < strlen(cr_my_intro); i++){
+            cr_entry.my_intro[i] = cr_my_intro[i];
+        }
+        if (strlen(cr_my_intro) != 100){
+            cr_entry.my_intro[i+1] = '\0';
+        }
+        break;
     }
 
     // printf("id：%s\n", cr_entry.id);
