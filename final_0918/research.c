@@ -35,6 +35,7 @@ struct entry entry_3 = { "113", "Mita", 1, "IIS-E1", "I am Jack."};
 
 
 /* 関数宣言 */
+void research(void);
 cell* find_id(char *entry_id);
 int to_integer(char *str);
 
@@ -67,11 +68,45 @@ int main (void){
 
     /* テスト部 */
     printf("テストを行います\n");
-    char test_id[5] = "112";    //テスト用の数字
-    cell *target = find_id(test_id);
-    
+    research();
+}
+
+
+/* research() - 関数内でidを検索し、検索したidの情報を表示する関数 */
+void research(void){
+    int i;
+    char search_id[10] = {'\0'};
+
+    while(1){
+        int f = 0;
+        printf("検索するidを入力して下さい。");
+        scanf("%s", search_id);
+        getchar();
+        if (strlen(search_id) > 5){
+            printf("不正な入力1：文字列の長さ\n");
+            continue;
+        }
+        for(i=0; i < strlen(search_id); i++){
+            if (!isdigit(search_id[i])){
+                printf("不正な入力2：数字でない\n");
+                f = 1;
+            }
+            if (f == 1){
+                break;
+            }   
+        }
+        if (f == 1){
+            continue;
+        } else{
+            break;
+        }
+    }
+
+    // printf("%s\n", search_id);
+    cell *target = find_id(search_id);
+
     if (target != NULL){
-        printf("構造体が見つかりました。\n");
+        printf("社員情報が見つかりました。\n");
         printf("id：%s\n", target->cell_entr.id);
         printf("名前：%s\n", target->cell_entr.name);
         printf("性別：%d\n", target->cell_entr.sex);
@@ -79,8 +114,10 @@ int main (void){
         printf("自己紹介：%s\n", target->cell_entr.my_intro);
 
     } else{
-        printf("構造体が見つかりませんでした。\n");
+        printf("見つかりませんでした。\n");
     }
+
+
 }
 
 
