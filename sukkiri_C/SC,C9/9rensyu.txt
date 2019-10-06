@@ -1,0 +1,33 @@
+9-1
+(1)　char型　char moji
+(2)　int型      →int money
+(3)　char*型　→char *mojiAddr = &moji ;
+(4)　int*型　int *moneyAddr = &money ;
+(5)　Monster*型　Monster *monsterAddr = &m ;
+(6)　char*型　char *age0Addr = &ages[0]
+(7)　void*型　void* someAddr = &変数
+
+ 9-2
+char　１バイト
+int　4バイト
+char*　8バイト
+int*　8バイト
+
+char型とint型は情報を格納することを目的としているため
+、より大きな値を格納可能なint型の方が消費メモリ量が大きくなる。
+char*型とint*型は保持しているアドレス値にchar型とint型があるという違いがあるものの、
+共にアドレス値を格納する型のため、消費メモリ量のサイズが同じである。
+※プログラム→9r-2.c
+
+9-3
+9r-3.c
+
+9-4
+9r-4.c
+(1)
+aのアドレス：140722467014548
+bのアドレス：140722467014516
+(2)
+bのアドレス
+(3)
+後ろから前に向かって進んでいく。

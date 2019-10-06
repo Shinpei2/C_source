@@ -1,0 +1,17 @@
+2-1
+ア　long number = 1504611718L;     //  ""で囲われてないLは、でかい数字を指す？
+イ　char alphabet = x ;
+ウ　bool isError = false ;
+エ　double pi = 3.1415 ;
+オ　int price = 19800 ;
+
+2-2
+(1)　int balance ;        // 預金残高
+(2)　float bodyFatRate ;     //体脂肪率
+(3)　bool isHoliday ;        //休日か否か
+(4)　char numChar        //文字としての数字
+(5)　long asset ;        //資産
+
+2-3
+(1)変数ageと変数yearに初期値を代入しなかったため。
+(2) 2rensyu.cに保存

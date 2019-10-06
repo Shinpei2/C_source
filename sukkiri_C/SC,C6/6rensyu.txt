@@ -1,0 +1,22 @@
+6-1
+(1)　書名、著者名、出版社、価格、出版年
+(2)　氏名、所属企業、所属部署、電話番号
+(3)　日時、タイトル、本文、写真、動画、評価、コメント
+
+6-2
+struct BOOK {
+    String bookName ;
+    String author ;
+    String publisher ;
+    int Price ;
+    int pubYear } ;
+
+6-3
+struck BOOK text {"教科書" ; "佐々木" ; "金沢大学出版" ; 2000 ; 1998 } ;
+struct  BOOK dictionary {"辞書" ; "三浦" ; 金沢大学院出版 ; 4000 ; 1992} ;
+
+6-4
+typedef struct { String name ; String enterprise ; String department ; int phoneNumber} Meishi ;
+
+6-5
+→6r-5.cに表示

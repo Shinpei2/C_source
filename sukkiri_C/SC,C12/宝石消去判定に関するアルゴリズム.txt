@@ -1,0 +1,68 @@
+//「宝石消去判定に関するアルゴリズム」
+
+
+//①フィールドの宝石判定：スロット内に3つ以上連続する値があるか調べる
+int BanishNum =165 ;        //ループ内でBanishNumの値が変わらない限り、BIArray[165]が返される。
+Element EleNum = EMPTY ;        //宝石属性
+StartNum = 0            //開始番号
+ContNum = 0;        //連続数
+
+
+do{
+    EleNum = EMPTY ;        //調べる前に宝石属性を無属性で初期化。
+    StartNum = 0 ;
+    ContNum = 0;
+    for(0~4,　,9~13まで)｛
+        if (5つ連続する個数がある){
+        EleNum = Slot[i] ;
+        StartNum =  i;
+        ContNum = 5;
+        }
+    ｝
+
+    for(左から11回分){
+        if (4つ以上連続する値がある&&5つの連続なし) {
+            Element EleNum = Slot[i] ;
+            StartNum =  i;
+            ContNum = 4;
+        }
+    }
+    for(左から12回分){
+        if (3つ以上連続する個数がある&&4つ以上の連続する値なし){
+            Element EleNum = Slot[i] ;
+            StartNum =  i;
+            ContNum = 3;
+        }
+    }
+} while(EleNum != EMPTY )
+    //属性番号、開始番号、連続数を表示
+
+//②どのBIArrayと一致するかを判定するアルゴリズム
+
+switch (5count){
+    case 2 :
+        if ( (5C[1].StartSLot == 5C[0].StartSlot+5&&(5C[0].StartSlot <=1|| ) )
+        break ;
+    case 1 :
+        switch(4count){
+            case 2:
+                bareak;
+            case 1:
+                break ;
+            case 0:
+                break;
+        }
+    case 0 :
+        swtch (4count){
+            case 3 :
+                break;
+            case 2 :
+                break ;
+            case 1 ;
+                break;
+            case 0 :
+                break;
+        }
+    case 0 :
+        swtch()
+}

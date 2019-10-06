@@ -1,0 +1,14 @@
+7-1
+(1)　int scores[5] = {} ;
+(2)　char primary[3] = {'R' , 'G' , 'B'} ;
+(3)　double averages[30] ;
+(4)　int table[9][9] ;
+
+7-2
+7r-2.c
+
+7-3
+7r-3.c
+
+7-4
+7r-4.c
