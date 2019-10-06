@@ -1,7 +1,0 @@
-cc -c db_funcs.c
-cc -c db_main.c
-cc -c db_misc.c 
-cc -c db_globals.c 
-cc db_funcs.o db_main.o db_misc.o db_globals.o -o simdb
-rm *.o
-
